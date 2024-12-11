@@ -9,20 +9,20 @@ By: [@Kreaytore](https://x.com/kreaytore)
 Dragonfruit is a Godot Plugin that allows you to easily add a customizable background image, slideshow of images, or a background video, to your Godot Code Editor!
 
 ## Single Image Example
-![Dragonfruit Image Example with Shinji](system/git-pics/Image.jpg)
+![Dragonfruit Image Example with Shinji](system/git-pics/image-ex.jpg)
 
 If you want to add a Single Image, simply choose "Single Image", choose your image, and press "Apply". This image will save in your Code Editor, and it will not be removed if you close the Engine.
 To remove the image, you can simply click the "clear" button, delete the custom theme in the "user_custom_bg_theme" folder, or delete the Custom Editor Theme path (located at "Editor > Editor Settings > Theme > Custom Theme" in the Engine).
 
 ## Slideshow Example
-![Dragonfruit Slideshow Example with Frieren](system/git-pics/Slideshow.jpg)
+![Dragonfruit Slideshow Example with Frieren](system/git-pics/slide-ex.jpg)
 
 Similarly to the Single Image, to have a Slideshow, add images to the Slideshow folder (user_slideshow_images).
 Then, choose the switch time duration, and click "Apply". The switch time will begin counting down in seconds before the image changes.
 Note that for every change, the Engine must pause for 1-3 seconds to make the change. This is unavoidable!
 
 ## Video Example
-![Dragonfruit Video Example with Easy Breezy Video Background](system/git-pics/vid.jpg)
+![Dragonfruit Video Example with Easy Breezy Video Background](system/git-pics/vid-ex.jpg)
 
 Even though the picture above is just an image, in the Engine, it's actually a video of the "Keep Your Hands Off Eizouken!" opening, "[Easy Breezy](https://www.youtube.com/watch?v=8-91y7BJ8QA)".
 To use the video feature, you need to place the video in the "user_video_bg" folder.
