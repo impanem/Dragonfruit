@@ -41,8 +41,7 @@ Hex Code "#222222" is the Default.
 
 ## Installation
 1. Create an `addons` folder in your project.
-2a. Create a `Dragonfruit` folder inside `addons`.
-2b: Or, instead of 2a, if you downloaded the .zip from this git, move the `Dragonfruit-main` folder from the .zip file into your `addons` folder, **and delete the *-main* part of *Dragonfruit-main* filename! This *-main* will cause issues!!!**
+2. 2a: Create a `Dragonfruit` folder inside `addons`. 2b: Or, instead of 2a, if you downloaded the .zip from this git, move the `Dragonfruit-main` folder from the .zip file into your `addons` folder, **and delete the *-main* part of *Dragonfruit-main* filename! This *-main* will cause issues!!!**
 3. Copy all of the files from this git into the `Dragonfruit` folder (if you didn't do the 2b method).
 4. Enable Dragonfruit in `Project Settings > Plugins`.
 5. **RESTART YOUR ENGINE.** After enabling the plugin, you may see some errors in your console. Close and reopen the Editor. If you still see the errors, that's fine. Try adding a Single Image background. After it works, close and re-open the Engine one last time. Dragonfruit shouldn't give any more errors after that.
@@ -53,4 +52,8 @@ res://
     addons
         Dragonfruit
 ```
+
 **Remember, if you downloaded the .zip from git, and your file says `Dragonfruit-main`, you need to delete the *-main* part of the filename. Otherwise, issues will occur, and the plugin won't work!**
+
+
+Thank you for installing!
