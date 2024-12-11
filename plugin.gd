@@ -1,7 +1,7 @@
 @tool
 extends EditorPlugin
 
-const DRAGONFRUIT = preload("res://addons/Dragonfruit/system/scripts/DRAGONFRUIT.gd")
+const DRAGONFRUIT = preload("res://addons/Dragonfruit/system/scripts/dragonfruit.gd")
 const TOOL_PANEL = preload("res://addons/Dragonfruit/system/scenes/tool_panel.tscn")
 var new_tool_panel
 
