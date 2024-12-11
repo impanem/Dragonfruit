@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DragonfruitSettings" load_steps=2 format=3 uid="uid://64h3oobr7q7w"]
+[gd_resource type="Resource" script_class="DragonfruitSettings" load_steps=2 format=3 uid="uid://dt0163rcrv5cn"]
 
 [ext_resource type="Script" path="res://addons/Dragonfruit/system/scripts/dragonfruit_saved_settings.gd" id="1_isgdq"]
 

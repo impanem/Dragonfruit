@@ -27,27 +27,27 @@ enum BGModes {
 }
 var current_bg_mode = BGModes.SINGLE_BG
 
-@onready var bg_mode_dropdown = $ScrollContainer/VBoxContainer/BGModeHbox/BGModeDropdown
+@onready var bg_mode_dropdown = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/BGModeHbox/BGModeDropdown
 
 # Theme
 var custom_ce_theme: Theme
 var custom_ce_stylebox_img_texture: StyleBoxTexture
 
 # Autostart
-@onready var autostart_check_box = $ScrollContainer/VBoxContainer/AutoStartHbox/AutostartCheckBox
+@onready var autostart_check_box = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AutoStartHbox/AutostartCheckBox
 @onready var load_timer = $LoadTimer
 var autostart_vid_slides: bool = true
 #endregion
 
 #region Video Vars
 const USER_VIDEO_SCENE = preload("res://addons/Dragonfruit/system/scenes/user_video_scene.tscn")
-@onready var video_line_edit = $ScrollContainer/VBoxContainer/VideoFileBox/VideoLineEdit
-@onready var reset_deci_button = $ScrollContainer/VBoxContainer/VideoAudioBox/ResetDeciButton
-@onready var use_method_dropdown = $ScrollContainer/VBoxContainer/VideoUseBox/UseMethodDropdown
-@onready var db_spin_box = $ScrollContainer/VBoxContainer/VideoAudioBox/db_SpinBox
-@onready var mute_button = $ScrollContainer/VBoxContainer/VideoMuteBox/MuteButton
-@onready var play_vid_button = $ScrollContainer/VBoxContainer/VideoControlBox/PlayVidButton
-@onready var pause_vid_button = $ScrollContainer/VBoxContainer/VideoControlBox/PauseVidButton
+@onready var video_line_edit = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoFileBox/VideoLineEdit
+@onready var reset_deci_button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoAudioBox/ResetDeciButton
+@onready var use_method_dropdown = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoUseBox/UseMethodDropdown
+@onready var db_spin_box = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoAudioBox/db_SpinBox
+@onready var mute_button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoMuteBox/MuteButton
+@onready var play_vid_button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoControlBox/PlayVidButton
+@onready var pause_vid_button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoControlBox/PauseVidButton
 
 var local_user_video_path: String = ""
 var current_code_editor_base = null
@@ -65,14 +65,13 @@ var video_player_for_buttons: VideoStreamPlayer = null
 const DEFAULT_VID_VOLUME = -25
 var last_vid_script_path: String = ""
 
-@onready var vid_bus_dropdown = $ScrollContainer/VBoxContainer/VideoBusHbox/VidBusDropdown
+@onready var vid_bus_dropdown = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoBusHbox/VidBusDropdown
 var project_buses = []
 var current_selected_bus: String = "Master"
 #endregion
 
 #region Slideshow Vars
-@onready var switch_timer_dropdown = $ScrollContainer/VBoxContainer/SlideshowTimeHbox/SwitchTimerDropdown
-
+@onready var switch_timer_dropdown = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlideshowTimeHbox/SwitchTimerDropdown
 enum SlideshowTimes {
 	ONE_MINUTE = 60,
 	FIVE_MINUTES = 300,
@@ -90,24 +89,24 @@ var slideshow_files: Array = []
 var slideshow_is_running: bool = false
 var do_first_slideshow_print: bool = true
 @onready var image_change_timer = $Image_Change_Timer
-@onready var time_label = $"ScrollContainer/VBoxContainer/SlideshowTimeActualHbox/Time Label"
+@onready var time_label = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlideshowTimeActualHbox/Time Label"
 const DEFAULT_SLIDESHOW_TIME_TEXT = "[color=ff0054]---[/color]s until next change."
 #endregion
 
 #region Single Image Vars
-@onready var addon_resource_picker = $"ScrollContainer/VBoxContainer/Img Hbox/AddonResourcePicker"
+@onready var addon_resource_picker = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Img Hbox/AddonResourcePicker"
 var ce_bg_img: CompressedTexture2D = null
 #endregion
 
 #region Modulate Color Vars
-@onready var color_picker_button = $"ScrollContainer/VBoxContainer/Modulate Hbox/ColorPickerButton"
+@onready var color_picker_button = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Modulate Hbox/ColorPickerButton"
 const DEFAULT_MODULATE_COLOR: Color = Color(0.137255, 0.137255, 0.137255, 1) # Hex Code "#222222"
 @onready var custom_modulate_color = DEFAULT_MODULATE_COLOR
 #endregion
 
 #region Axis Stretch Vars
-@onready var h_axis_option = $"ScrollContainer/VBoxContainer/AxisStretchGridContainer/Axis Stretch Hbox/H Axis Option"
-@onready var v_axis_option = $"ScrollContainer/VBoxContainer/AxisStretchGridContainer/Axis Stretch Hbox2/V Axis Option"
+@onready var h_axis_option = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Axis Stretch Hbox/H Axis Option"
+@onready var v_axis_option = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Axis Stretch Hbox2/V Axis Option"
 enum StretchModes {
 	STRETCH,
 	TILE,
@@ -118,8 +117,8 @@ var v_axis_mode = StretchModes.STRETCH
 #endregion
 
 #region End Vars
-@onready var apply_button = $ScrollContainer/VBoxContainer/Apply_Button
-@onready var clear_button = $ScrollContainer/VBoxContainer/Clear_Button
+@onready var clear_button = $MarginContainer/VBoxContainer/Clear_Button
+@onready var apply_button = $MarginContainer/VBoxContainer/Apply_Button
 #endregion
 
 #region Utility/Start Funcs
