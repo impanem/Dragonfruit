@@ -1,0 +1,529 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct2ls772rv1xf"]
+
+[ext_resource type="Theme" uid="uid://c24vwtga0ni2q" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/tool_theme/main_tool_theme.tres" id="1_aiirf"]
+[ext_resource type="Script" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/scripts/resource_picker.gd" id="1_g3238"]
+[ext_resource type="Script" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/scripts/dragonfruit.gd" id="1_j1iio"]
+[ext_resource type="Texture2D" uid="uid://b8yiljrcpngv4" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/tool_theme/banner.jpg" id="3_7gtg0"]
+
+[node name="Dragonfruit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_aiirf")
+script = ExtResource("1_j1iio")
+
+[node name="Image_Change_Timer" type="Timer" parent="."]
+wait_time = 300.0
+one_shot = true
+
+[node name="LoadTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_vertical = 510
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/line_separation = -12
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center][wave][color=ff0054]Dragonfruit[/color]
+Code Editor Wallpaper[/wave][/center]"
+fit_content = true
+
+[node name="Credit Note" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Developed by @Kreaytore[/center]"
+fit_content = true
+
+[node name="Banner" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+texture = ExtResource("3_7gtg0")
+expand_mode = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BG Mode Title" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]Background Mode[/center]"
+fit_content = true
+
+[node name="BGModeHbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BGMode" type="Label" parent="ScrollContainer/VBoxContainer/BGModeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Background Mode"
+
+[node name="BGModeDropdown" type="OptionButton" parent="ScrollContainer/VBoxContainer/BGModeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "Single Image"
+popup/item_0/id = 0
+popup/item_1/text = "Slideshow"
+popup/item_1/id = 1
+popup/item_2/text = "Video"
+popup/item_2/id = 2
+
+[node name="AutoStartHbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AutostartLabel" type="Label" parent="ScrollContainer/VBoxContainer/AutoStartHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Autostart Slideshow/Video on Load"
+
+[node name="AutostartCheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer/AutoStartHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+text = "Autostart ON"
+
+[node name="HSeparator5" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubTitle_Image" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Image Mode Variables:[/center]"
+fit_content = true
+
+[node name="Img Hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Img Label" type="Label" parent="ScrollContainer/VBoxContainer/Img Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Single Image"
+
+[node name="AddonResourcePicker" type="EditorResourcePicker" parent="ScrollContainer/VBoxContainer/Img Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+base_type = "CompressedTexture2D"
+script = ExtResource("1_g3238")
+
+[node name="EmpyNote" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]You do not need to add the Single BG IMG again if you close and reopen the Engine.[/center]"
+fit_content = true
+
+[node name="HSeparator7" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubTitle_Slideshow" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Slideshow Mode Variables:[/center]"
+fit_content = true
+
+[node name="Img Hbox2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Slideshow Note" type="Label" parent="ScrollContainer/VBoxContainer/Img Hbox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slideshow File"
+
+[node name="EmpyNote2" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Img Hbox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center]If Slideshow is selected, images in the slideshow file (res://addons/Dragonfruit - Code Editor Wallpaper/user_slideshow_images/) will all be selected.[/center]"
+fit_content = true
+
+[node name="SlideshowTimeHbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Switch Time Label" type="Label" parent="ScrollContainer/VBoxContainer/SlideshowTimeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slideshow Switch Time"
+
+[node name="SwitchTimerDropdown" type="OptionButton" parent="ScrollContainer/VBoxContainer/SlideshowTimeHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 1
+item_count = 9
+popup/item_0/text = "1 Minute"
+popup/item_0/id = 0
+popup/item_1/text = "5 Minutes"
+popup/item_1/id = 1
+popup/item_2/text = "10 Minutes"
+popup/item_2/id = 2
+popup/item_3/text = "15 Minutes"
+popup/item_3/id = 3
+popup/item_4/text = "30 Minutes"
+popup/item_4/id = 4
+popup/item_5/text = "45 Minutes"
+popup/item_5/id = 5
+popup/item_6/text = "1 Hour"
+popup/item_6/id = 6
+popup/item_7/text = "2 Hours"
+popup/item_7/id = 7
+popup/item_8/text = "3 Hours"
+popup/item_8/id = 8
+
+[node name="SlideshowTimeActualHbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Switch Time Actual Label" type="Label" parent="ScrollContainer/VBoxContainer/SlideshowTimeActualHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slideshow Time Left:"
+
+[node name="Time Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/SlideshowTimeActualHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[color=ff0054]---[/color]s until next change."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="TimeSwitchNote" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]When the Slideshow Image Switches, the Engine may pause for 1-3 seconds. This is unavoidable and necessary for the BG to change.[/center]"
+fit_content = true
+
+[node name="HSeparator6" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubTitle_Video" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Video Mode Variables:[/center]"
+fit_content = true
+
+[node name="DefaultVidNote" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center](Default video filepath is: res://addons/Dragonfruit - Code Editor Wallpaper/user_video_bg/)[/center]"
+fit_content = true
+
+[node name="VideoUseBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VideoMethodLabel" type="Label" parent="ScrollContainer/VBoxContainer/VideoUseBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Video Method"
+
+[node name="UseMethodDropdown" type="OptionButton" parent="ScrollContainer/VBoxContainer/VideoUseBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Folder"
+popup/item_0/id = 0
+popup/item_1/text = "Custom Path"
+popup/item_1/id = 1
+
+[node name="VideoFileBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VideoPathLabel" type="Label" parent="ScrollContainer/VBoxContainer/VideoFileBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Custom Video Path"
+
+[node name="VideoLineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/VideoFileBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "res:// filepath here"
+
+[node name="VideoFiletypeNote" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][color=ff0054]Important: As of 12/6/2024, The Engine only allows .ogv video files! .mp4 and others won't work! You have to convert them!
+
+Warning: If you give a file that is not an \"ogv/ogg\" (ex: a png), the \"ogv/ogg\" file extenison (so \".png.ogv\" or \".mp4.ogv\"), it will crash your Engine. You must actually convert your video files into an \"ogv/ogg\" using a converter program or website, and do not use image files.
+
+Important: As of 12/6/2024, The Engine doesn't support \"video seeking\". So every time you switch scripts, the video will replay from the start. When The Engine supports video seeking this will be fixed! Sorry![/color][/center]
+
+"
+fit_content = true
+
+[node name="VideoBusHbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VidBusLabel" type="Label" parent="ScrollContainer/VBoxContainer/VideoBusHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bus"
+
+[node name="VidBusDropdown" type="OptionButton" parent="ScrollContainer/VBoxContainer/VideoBusHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+selected = 0
+item_count = 1
+popup/item_0/text = "Master"
+popup/item_0/id = 0
+
+[node name="VideoAudioBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VideoAudioLabel" type="Label" parent="ScrollContainer/VBoxContainer/VideoAudioBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Video Volume dB"
+
+[node name="ResetDeciButton" type="Button" parent="ScrollContainer/VBoxContainer/VideoAudioBox"]
+layout_mode = 2
+disabled = true
+text = "Default dB"
+
+[node name="db_SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/VideoAudioBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -80.0
+max_value = 5.0
+step = 0.1
+value = -25.0
+editable = false
+suffix = "dB"
+
+[node name="VideoMuteBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VideoMuteLabel" type="Label" parent="ScrollContainer/VBoxContainer/VideoMuteBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mute"
+
+[node name="MuteButton" type="Button" parent="ScrollContainer/VBoxContainer/VideoMuteBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+toggle_mode = true
+text = "Mute Video"
+
+[node name="VideoAutoplayBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VideoAutoplayLabel" type="Label" parent="ScrollContainer/VBoxContainer/VideoAutoplayBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Loop Video"
+
+[node name="LoopCheckbox" type="CheckBox" parent="ScrollContainer/VBoxContainer/VideoAutoplayBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+text = "On"
+
+[node name="VideoControlBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PlayVidButton" type="Button" parent="ScrollContainer/VBoxContainer/VideoControlBox"]
+layout_mode = 2
+disabled = true
+text = "Play Vid"
+
+[node name="PauseVidButton" type="Button" parent="ScrollContainer/VBoxContainer/VideoControlBox"]
+layout_mode = 2
+disabled = true
+text = "Pause Vid"
+
+[node name="VideoLoopNote" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]The video will automatically loop when finished.[/center]"
+fit_content = true
+
+[node name="VideoScriptCloseNote" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Known Issue: Sometimes, when closing or opening a new script, the video will stop. Simply switch to another script, or press the \"Apply\" button below, again, to restart the video.[/center]"
+fit_content = true
+
+[node name="HSeparator4" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Modulate Title" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]Modulate (Image Only)[/center]"
+fit_content = true
+
+[node name="Modulate Hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Modulate Label" type="Label" parent="ScrollContainer/VBoxContainer/Modulate Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Color"
+
+[node name="Reset Color Button" type="Button" parent="ScrollContainer/VBoxContainer/Modulate Hbox"]
+layout_mode = 2
+text = "Reset Color"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/VBoxContainer/Modulate Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[node name="HexCode" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Hex Code \"[u]#101010[/u]\" recommended for best code visibility. 
+Hex Code \"[u]#303030[/u]\" recommended for best BG & Code visibility.
+Hex Code \"[u]#222222[/u]\" is the Default.[/center]"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AxisStretchGridContainer" type="GridContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AxisStretchTitle" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/AxisStretchGridContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]Axis Stretch (Image Only)[/center]"
+fit_content = true
+
+[node name="Axis Stretch Hbox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/AxisStretchGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Horizontal Label" type="Label" parent="ScrollContainer/VBoxContainer/AxisStretchGridContainer/Axis Stretch Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Horizontal"
+
+[node name="H Axis Option" type="OptionButton" parent="ScrollContainer/VBoxContainer/AxisStretchGridContainer/Axis Stretch Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "Stretch"
+popup/item_0/id = 0
+popup/item_1/text = "Tile"
+popup/item_1/id = 1
+popup/item_2/text = "Tile Fit"
+popup/item_2/id = 2
+
+[node name="Axis Stretch Hbox2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/AxisStretchGridContainer"]
+layout_mode = 2
+
+[node name="Vertical Label" type="Label" parent="ScrollContainer/VBoxContainer/AxisStretchGridContainer/Axis Stretch Hbox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vertical"
+
+[node name="V Axis Option" type="OptionButton" parent="ScrollContainer/VBoxContainer/AxisStretchGridContainer/Axis Stretch Hbox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "Stretch"
+popup/item_0/id = 0
+popup/item_1/text = "Tile"
+popup/item_1/id = 1
+popup/item_2/text = "Tile Fit"
+popup/item_2/id = 2
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Clear_Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clear All"
+
+[node name="Apply_Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply New Background"
+
+[node name="SaveWarning" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][color=ff0054]Warning: The \"Code Editor's Background\" should change in real time after a short pause. This pause is usually 1-3 seconds. If you have \"autostart\" on, then this pause will happen when you start the Engine.[/color][/center]"
+fit_content = true
+
+[node name="OverwriteWarning" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][color=ff0054]Warning: \"Apply\" will *replace* any existing custom theme's path (located at: Editor > Editor Settings > Theme > Custom Theme), with a new path to a new custom theme created by the tool. \"Clear\" will *remove* any existing custom theme's path, and the Dragonfruit saved data.
+
+These will [u][b]NOT[/b][/u] overwrite an existing custom theme, only replace the path. Don't worry about your old theme!
+If you want to keep your old custom theme and also have a BG image in your code editor:
+1. Make a new CodeEdit Type in your theme.
+2. Add a StyleBoxTexture.
+3. Add the image you want to appear![/color][/center]"
+fit_content = true
+
+[node name="Emoji Note" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]o(*￣▽￣*)ブ[/center]"
+fit_content = true
+
+[connection signal="timeout" from="Image_Change_Timer" to="." method="_on_image_change_timer_timeout"]
+[connection signal="timeout" from="LoadTimer" to="." method="_on_load_timer_timeout"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/BGModeHbox/BGModeDropdown" to="." method="_on_bg_mode_dropdown_item_selected"]
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/AutoStartHbox/AutostartCheckBox" to="." method="_on_autostart_check_box_toggled"]
+[connection signal="resource_changed" from="ScrollContainer/VBoxContainer/Img Hbox/AddonResourcePicker" to="." method="_on_addon_resource_picker_resource_changed"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/SlideshowTimeHbox/SwitchTimerDropdown" to="." method="_on_switch_timer_dropdown_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/VideoUseBox/UseMethodDropdown" to="." method="_on_use_method_dropdown_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/VideoBusHbox/VidBusDropdown" to="." method="_on_vid_bus_dropdown_item_selected"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VideoAudioBox/ResetDeciButton" to="." method="_on_reset_deci_button_pressed"]
+[connection signal="value_changed" from="ScrollContainer/VBoxContainer/VideoAudioBox/db_SpinBox" to="." method="_on_db_spin_box_value_changed"]
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/VideoMuteBox/MuteButton" to="." method="_on_mute_button_toggled"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VideoControlBox/PlayVidButton" to="." method="_on_play_vid_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VideoControlBox/PauseVidButton" to="." method="_on_pause_vid_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Modulate Hbox/Reset Color Button" to="." method="_on_reset_color_button_pressed"]
+[connection signal="color_changed" from="ScrollContainer/VBoxContainer/Modulate Hbox/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/AxisStretchGridContainer/Axis Stretch Hbox/H Axis Option" to="." method="_on_h_axis_option_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/AxisStretchGridContainer/Axis Stretch Hbox2/V Axis Option" to="." method="_on_v_axis_option_item_selected"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Clear_Button" to="." method="_on_clear_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Apply_Button" to="." method="_on_apply_button_pressed"]

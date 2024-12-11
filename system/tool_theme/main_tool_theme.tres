@@ -1,0 +1,79 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c24vwtga0ni2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xce60"]
+bg_color = Color(0.184456, 0, 0.0326011, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvx6w"]
+bg_color = Color(0.789109, 0, 0.252547, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfl1f"]
+bg_color = Color(0.789109, 0, 0.252547, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nwyh"]
+bg_color = Color(1, 0, 0.329412, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5ylm"]
+bg_color = Color(0.454513, 0, 0.130639, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ikbys"]
+color = Color(1, 0, 0.329412, 1)
+thickness = 4
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 6
+Button/styles/disabled = SubResource("StyleBoxFlat_xce60")
+Button/styles/focus = SubResource("StyleBoxFlat_pvx6w")
+Button/styles/hover = SubResource("StyleBoxFlat_rfl1f")
+Button/styles/normal = SubResource("StyleBoxFlat_8nwyh")
+Button/styles/pressed = SubResource("StyleBoxFlat_l5ylm")
+HSeparator/styles/separator = SubResource("StyleBoxLine_ikbys")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 5
+RichTextLabel/font_sizes/bold_font_size = 12
+RichTextLabel/font_sizes/normal_font_size = 12
