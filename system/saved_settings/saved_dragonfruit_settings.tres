@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="DragonfruitSettings" load_steps=2 format=3 uid="uid://b5jdjh16t2c3a"]
+[gd_resource type="Resource" script_class="DragonfruitSettings" load_steps=2 format=3 uid="uid://64h3oobr7q7w"]
 
-[ext_resource type="Script" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/scripts/dragonfruit_saved_settings.gd" id="1_rksss"]
+[ext_resource type="Script" path="res://addons/Dragonfruit/system/scripts/dragonfruit_saved_settings.gd" id="1_isgdq"]
 
 [resource]
-script = ExtResource("1_rksss")
+script = ExtResource("1_isgdq")
 autostart_slides_vid = true
 saved_bg_mode = 0
 saved_slideshow_switch_time = 1
