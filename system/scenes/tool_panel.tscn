@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ct2ls772rv1xf"]
 
-[ext_resource type="Theme" uid="uid://c24vwtga0ni2q" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/tool_theme/main_tool_theme.tres" id="1_aiirf"]
-[ext_resource type="Script" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/scripts/resource_picker.gd" id="1_g3238"]
-[ext_resource type="Script" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/scripts/dragonfruit.gd" id="1_j1iio"]
-[ext_resource type="Texture2D" uid="uid://b8yiljrcpngv4" path="res://addons/Dragonfruit - Code Editor Wallpaper/system/tool_theme/banner.jpg" id="3_7gtg0"]
+[ext_resource type="Theme" uid="uid://c24vwtga0ni2q" path="res://addons/Dragonfruit/system/tool_theme/main_tool_theme.tres" id="1_aiirf"]
+[ext_resource type="Script" path="res://addons/Dragonfruit/system/scripts/resource_picker.gd" id="1_g3238"]
+[ext_resource type="Script" path="res://addons/Dragonfruit/system/scripts/dragonfruit.gd" id="1_j1iio"]
+[ext_resource type="Texture2D" uid="uid://b8yiljrcpngv4" path="res://addons/Dragonfruit/system/tool_theme/banner.jpg" id="3_7gtg0"]
 
 [node name="Dragonfruit" type="Control"]
 layout_mode = 3
@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_vertical = 510
+scroll_vertical = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2

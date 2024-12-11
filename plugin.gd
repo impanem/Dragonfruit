@@ -1,8 +1,8 @@
 @tool
 extends EditorPlugin
 
-const DRAGONFRUIT = preload("res://addons/DRAGONFRUIT - Code Editor Wallpaper/system/scripts/DRAGONFRUIT.gd")
-const TOOL_PANEL = preload("res://addons/DRAGONFRUIT - Code Editor Wallpaper/system/scenes/tool_panel.tscn")
+const DRAGONFRUIT = preload("res://addons/Dragonfruit/system/scripts/DRAGONFRUIT.gd")
+const TOOL_PANEL = preload("res://addons/Dragonfruit/system/scenes/tool_panel.tscn")
 var new_tool_panel
 
 func _enter_tree():

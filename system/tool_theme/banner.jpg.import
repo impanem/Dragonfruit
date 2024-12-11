@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8yiljrcpngv4"
-path="res://.godot/imported/banner.jpg-cc0cffc150ae652235a7c9bc302f7a71.ctex"
+path="res://.godot/imported/banner.jpg-079c6a32ce2fdd554f48748355e702dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Dragonfruit - Code Editor Wallpaper/system/tool_theme/banner.jpg"
-dest_files=["res://.godot/imported/banner.jpg-cc0cffc150ae652235a7c9bc302f7a71.ctex"]
+source_file="res://addons/Dragonfruit/system/tool_theme/banner.jpg"
+dest_files=["res://.godot/imported/banner.jpg-079c6a32ce2fdd554f48748355e702dd.ctex"]
 
 [params]
 

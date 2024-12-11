@@ -8,14 +8,14 @@ Created: December 1st, 2024
 """
 
 #region Filepath Vars
-const SAVED_WP_DATA_FILE_PATH = "res://addons/Dragonfruit - Code Editor Wallpaper/system/saved_settings/"
+const SAVED_WP_DATA_FILE_PATH = "res://addons/Dragonfruit/system/saved_settings/"
 const SAVED_WP_DATA_FILE_NAME = "saved_dragonfruit_settings.tres"
 var saved_wp_data_resource: DragonfruitSettings = null
 var local_options_for_saving: Dictionary = {}
-const SINGLE_BG_FILE_PATH = "res://addons/Dragonfruit - Code Editor Wallpaper/user_custom_bg_theme/"
+const SINGLE_BG_FILE_PATH = "res://addons/Dragonfruit/user_custom_bg_theme/"
 const SINGLE_BG_FILE_NAME = "dragonfruit_bg_theme.tres"
-const SLIDESHOW_BG_FILE_PATH = "res://addons/Dragonfruit - Code Editor Wallpaper/user_slideshow_images/"
-const VIDEO_BG_FILE_PATH = "res://addons/Dragonfruit - Code Editor Wallpaper/user_video_bg/"
+const SLIDESHOW_BG_FILE_PATH = "res://addons/Dragonfruit/user_slideshow_images/"
+const VIDEO_BG_FILE_PATH = "res://addons/Dragonfruit/user_video_bg/"
 #endregion
 
 #region General Vars
@@ -40,7 +40,7 @@ var autostart_vid_slides: bool = true
 #endregion
 
 #region Video Vars
-const USER_VIDEO_SCENE = preload("res://addons/Dragonfruit - Code Editor Wallpaper/system/scenes/user_video_scene.tscn")
+const USER_VIDEO_SCENE = preload("res://addons/Dragonfruit/system/scenes/user_video_scene.tscn")
 @onready var video_line_edit = $ScrollContainer/VBoxContainer/VideoFileBox/VideoLineEdit
 @onready var reset_deci_button = $ScrollContainer/VBoxContainer/VideoAudioBox/ResetDeciButton
 @onready var use_method_dropdown = $ScrollContainer/VBoxContainer/VideoUseBox/UseMethodDropdown
