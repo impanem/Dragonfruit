@@ -16,6 +16,10 @@ const SINGLE_BG_FILE_PATH = "res://addons/Dragonfruit/user_custom_bg_theme/"
 const SINGLE_BG_FILE_NAME = "dragonfruit_bg_theme.tres"
 const SLIDESHOW_BG_FILE_PATH = "res://addons/Dragonfruit/user_slideshow_images/"
 const VIDEO_BG_FILE_PATH = "res://addons/Dragonfruit/user_video_bg/"
+
+# Banner
+@onready var df_banner = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DF_Banner
+const BANNER = preload("res://addons/Dragonfruit/system/tool_theme/banner.jpg")
 #endregion
 
 #region General Vars
@@ -122,6 +126,9 @@ var v_axis_mode = StretchModes.STRETCH
 #endregion
 
 #region Utility/Start Funcs
+func _ready():
+	df_banner.set_texture(BANNER)
+
 func _on_load_timer_timeout():
 	"""
 		If you're reading this, I bet you're wondering:

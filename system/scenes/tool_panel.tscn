@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/Dragonfruit/system/scripts/resource_picker.gd" id="1_g3238"]
 [ext_resource type="Script" path="res://addons/Dragonfruit/system/scripts/dragonfruit.gd" id="1_j1iio"]
 [ext_resource type="Theme" uid="uid://cxsobjxfo6s08" path="res://addons/Dragonfruit/system/tool_theme/warning_bg.tres" id="3_0n7lb"]
-[ext_resource type="Texture2D" uid="uid://b8yiljrcpngv4" path="res://addons/Dragonfruit/system/tool_theme/banner.jpg" id="3_7gtg0"]
+[ext_resource type="Texture2D" uid="uid://b8yiljrcpngv4" path="res://addons/Dragonfruit/system/tool_theme/banner.jpg" id="3_5jfqq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5tyy"]
 bg_color = Color(1, 0, 0.329412, 1)
@@ -64,10 +64,10 @@ Code Editor Wallpaper
 [font_size=14]Developed by @Kreaytore[/font_size][/wave][/center]"
 fit_content = true
 
-[node name="Banner" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="DF_Banner" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
-texture = ExtResource("3_7gtg0")
+texture = ExtResource("3_5jfqq")
 expand_mode = 1
 
 [node name="BG Mode Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
