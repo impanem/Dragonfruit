@@ -45,6 +45,7 @@ Hex Code "#222222" is the Default.
 3. Copy all of the files from this git into the `Dragonfruit` folder (if you didn't do the 2b method).
 4. Enable Dragonfruit in `Project Settings > Plugins`.
 5. **RESTART YOUR ENGINE.** After enabling the plugin, you may see some errors in your console. Close and reopen the Editor. If you still see the errors, that's fine. Try adding a Single Image background. After it works, close and re-open the Engine one last time. Dragonfruit shouldn't give any more errors after that.
+6. If you can't find the Dragonfruit dock once enabled, it should be on the right side, next to `Inspector | Node | History`.
 
 This is how your addons folder should look:
 ```
