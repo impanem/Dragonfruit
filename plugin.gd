@@ -33,6 +33,7 @@ func _exit_tree():
 					var custom_editor_theme_setting = EditorInterface.get_editor_settings()
 					custom_editor_theme_setting.set_setting("interface/theme/custom_theme", "")
 	
-	EditorInterface.get_resource_filesystem().scan()
+	if not EditorInterface.get_resource_filesystem().is_scanning():
+		EditorInterface.get_resource_filesystem().scan()
 	
 	new_tool_panel.queue_free()
