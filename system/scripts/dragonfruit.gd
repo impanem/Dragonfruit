@@ -704,10 +704,10 @@ func clear_custom_theme_folder():
 	var custom_editor_theme_setting = EditorInterface.get_editor_settings()
 	custom_editor_theme_setting.set_setting("interface/theme/custom_theme", "")
 	
-	current_code_editor_base = EditorInterface.get_script_editor().get_current_editor().get_base_editor()
-	if not current_code_editor_base.get_children().is_empty():
-		for child in current_code_editor_base.get_children():
-			child.queue_free()
+	if current_code_editor_base != null:
+		if not current_code_editor_base.get_children().is_empty():
+			for child in current_code_editor_base.get_children():
+				child.queue_free()
 	
 	current_code_editor_base = null
 	video_player_for_buttons = null
