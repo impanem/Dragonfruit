@@ -33,6 +33,12 @@ After selecting your video and playing it, you can then adjust the Audio Bus, Vo
 
 **IMPORTANT!!!** *As of December 10th, 2024, the Engine does not support video seeking. So every time you switch a script, the video replays from the start. This will be fixed when the Engine supports video seeking!*
 
+## Shader Editor Example
+![Dragonfruit Video Example with Easy Breezy Video Background](system/git-pics/ShaderEditor.png)
+
+## Code & Shader Editor Split Example
+![Dragonfruit Video Example with Easy Breezy Video Background](system/git-pics/Split.png)
+
 ## Modulate
 Because some images may be too hard on the eyes, there is a modulate feature, to allow for better code visibility.
 Hex Code "#101010" recommended for best code visibility. 
