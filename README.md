@@ -56,8 +56,8 @@ Hex Code "#222222" is the Default.
 This is how your addons folder should look:
 ```
 res://
-    addons
-        Dragonfruit
+	addons
+		Dragonfruit
 ```
 
 **Remember, if you downloaded the .zip from git, and your file says `Dragonfruit-main`, you need to delete the *-main* part of the filename. Otherwise, issues will occur, and the plugin won't work!**

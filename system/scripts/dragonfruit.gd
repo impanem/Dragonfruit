@@ -8,74 +8,73 @@ Created: December 1st, 2024
 """
 
 #region Filepath Vars
-const SAVED_WP_DATA_FILE_PATH = "res://addons/Dragonfruit/system/saved_settings/"
-const SAVED_WP_DATA_FILE_NAME = "saved_dragonfruit_settings.tres"
+const SAVED_WP_DATA_FILE_PATH: String = "res://addons/Dragonfruit/system/saved_settings/"
+const SAVED_WP_DATA_FILE_NAME: String = "saved_dragonfruit_settings.tres"
+const SINGLE_BG_FILE_PATH: String = "res://addons/Dragonfruit/user_custom_bg_theme/"
+const SINGLE_BG_FILE_NAME: String = "dragonfruit_bg_theme.tres"
+const SLIDESHOW_BG_FILE_PATH: String = "res://addons/Dragonfruit/user_slideshow_images/"
+const VIDEO_BG_FILE_PATH: String = "res://addons/Dragonfruit/user_video_bg/"
 var saved_wp_data_resource: DragonfruitSettings = null
 var local_options_for_saving: Dictionary = {}
-const SINGLE_BG_FILE_PATH = "res://addons/Dragonfruit/user_custom_bg_theme/"
-const SINGLE_BG_FILE_NAME = "dragonfruit_bg_theme.tres"
-const SLIDESHOW_BG_FILE_PATH = "res://addons/Dragonfruit/user_slideshow_images/"
-const VIDEO_BG_FILE_PATH = "res://addons/Dragonfruit/user_video_bg/"
 
 # Banner
-@onready var df_banner = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DF_Banner
-const BANNER = preload("res://addons/Dragonfruit/system/tool_theme/banner.jpg")
+@onready var df_banner: TextureRect = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DF_Banner
+const BANNER: CompressedTexture2D = preload("res://addons/Dragonfruit/system/tool_theme/banner.jpg")
 #endregion
 
 #region General Vars
+@onready var bg_mode_dropdown: OptionButton = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/BGModeHbox/BGModeDropdown
 # Mode Choice
 enum BGModes {
 	SINGLE_BG,
 	SLIDESHOW,
 	VIDEO
 }
-var current_bg_mode = BGModes.SINGLE_BG
-
-@onready var bg_mode_dropdown = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/BGModeHbox/BGModeDropdown
+var current_bg_mode: BGModes = BGModes.SINGLE_BG
 
 # Theme
-var custom_ce_theme: Theme
-var custom_ce_stylebox_img_texture: StyleBoxTexture
+var custom_ce_theme: Theme = null
+var custom_ce_stylebox_img_texture: StyleBoxTexture = null
 
 # Autostart
-@onready var autostart_check_box = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AutoStartHbox/AutostartCheckBox
-@onready var load_timer = $LoadTimer
+@onready var autostart_check_box: CheckBox = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AutoStartHbox/AutostartCheckBox
+@onready var load_timer: Timer = $LoadTimer
+
 var autostart_vid_slides: bool = true
 #endregion
 
 #region Video Vars
-const USER_VIDEO_SCENE = preload("res://addons/Dragonfruit/system/scenes/user_video_scene.tscn")
-@onready var video_line_edit = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoFileBox/VideoLineEdit
-@onready var reset_deci_button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoAudioBox/ResetDeciButton
-@onready var use_method_dropdown = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoUseBox/UseMethodDropdown
-@onready var db_spin_box = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoAudioBox/db_SpinBox
-@onready var mute_button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoMuteBox/MuteButton
-@onready var play_vid_button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoControlBox/PlayVidButton
-@onready var pause_vid_button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoControlBox/PauseVidButton
+const DRAGONFRUIT_USER_VIDEO_SCENE: PackedScene = preload("res://addons/Dragonfruit/system/scenes/dragonfruit_user_video_scene.tscn")
+@onready var use_method_dropdown: OptionButton = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoUseBox/UseMethodDropdown
+@onready var video_line_edit: LineEdit = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoFileBox/VideoLineEdit
+@onready var reset_deci_button: Button = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoAudioBox/ResetDeciButton
+@onready var db_spin_box: SpinBox = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoAudioBox/db_SpinBox
+@onready var mute_button: Button = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoMuteBox/MuteButton
+@onready var play_vid_button: Button = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoControlBox/PlayVidButton
+@onready var pause_vid_button: Button = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoControlBox/PauseVidButton
 
 var local_user_video_path: String = ""
-var current_code_editor_base = null
-var switch_script_change = false
-var script_editor: ScriptEditor
+var current_code_editor_base: Control = null
+var switch_script_change: bool = false
+var script_editor: ScriptEditor = null
 
 enum VidFolderOrVidFile {
 	FOLDER,
 	CUSTOM_PATH
 }
-
 # Audio
-var current_vid_mode = VidFolderOrVidFile.FOLDER
+var current_vid_mode: VidFolderOrVidFile = VidFolderOrVidFile.FOLDER
 var video_player_for_buttons: VideoStreamPlayer = null
-const DEFAULT_VID_VOLUME = -25
+const DEFAULT_VID_VOLUME: float = -25.0
 var last_vid_script_path: String = ""
 
-@onready var vid_bus_dropdown = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoBusHbox/VidBusDropdown
-var project_buses = []
+@onready var vid_bus_dropdown: OptionButton = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VideoBusHbox/VidBusDropdown
+var project_buses: Array[String] = []
 var current_selected_bus: String = "Master"
 #endregion
 
 #region Slideshow Vars
-@onready var switch_timer_dropdown = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlideshowTimeHbox/SwitchTimerDropdown
+@onready var switch_timer_dropdown: OptionButton = $Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlideshowTimeHbox/SwitchTimerDropdown
 enum SlideshowTimes {
 	ONE_MINUTE = 60,
 	FIVE_MINUTES = 300,
@@ -87,30 +86,30 @@ enum SlideshowTimes {
 	TWO_HOURS = 7200,
 	THREE_HOURS = 10800
 }
-var current_slideshow_change_time = SlideshowTimes.TEN_MINUTES
+var current_slideshow_change_time: int = SlideshowTimes.TEN_MINUTES
 
-var slideshow_files: Array = []
+var slideshow_files: Array[String] = []
 var slideshow_is_running: bool = false
 var do_first_slideshow_print: bool = true
-@onready var image_change_timer = $Image_Change_Timer
-@onready var time_label = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlideshowTimeActualHbox/Time Label"
-const DEFAULT_SLIDESHOW_TIME_TEXT = "[color=ff0054]---[/color]s until next change."
+@onready var image_change_timer: Timer = $Image_Change_Timer
+@onready var time_label: RichTextLabel = $"Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SlideshowTimeActualHbox/Time Label"
+const DEFAULT_SLIDESHOW_TIME_TEXT: String = "[color=ff0054]---[/color]s until next change."
 #endregion
 
 #region Single Image Vars
-@onready var addon_resource_picker = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Img Hbox/AddonResourcePicker"
+@onready var addon_resource_picker: AddonResourcePicker = $"Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Img Hbox3/AddonResourcePicker"
 var ce_bg_img: CompressedTexture2D = null
 #endregion
 
 #region Modulate Color Vars
-@onready var color_picker_button = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Modulate Hbox/ColorPickerButton"
+@onready var color_picker_button: ColorPickerButton = $"Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Modulate Hbox/ColorPickerButton"
 const DEFAULT_MODULATE_COLOR: Color = Color(0.137255, 0.137255, 0.137255, 1) # Hex Code "#222222"
-@onready var custom_modulate_color = DEFAULT_MODULATE_COLOR
+@onready var custom_modulate_color: Color = DEFAULT_MODULATE_COLOR
 #endregion
 
 #region Axis Stretch Vars
-@onready var h_axis_option = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Axis Stretch Hbox/H Axis Option"
-@onready var v_axis_option = $"MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Axis Stretch Hbox2/V Axis Option"
+@onready var h_axis_option: OptionButton = $"Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Axis Stretch Hbox/H Axis Option"
+@onready var v_axis_option: OptionButton = $"Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Axis Stretch Hbox2/V Axis Option"
 enum StretchModes {
 	STRETCH,
 	TILE,
@@ -121,15 +120,15 @@ var v_axis_mode = StretchModes.STRETCH
 #endregion
 
 #region End Vars
-@onready var clear_button = $MarginContainer/VBoxContainer/Clear_Button
-@onready var apply_button = $MarginContainer/VBoxContainer/Apply_Button
+@onready var clear_button: Button = $Panel/MarginContainer/VBoxContainer/Clear_Button
+@onready var apply_button: Button = $Panel/MarginContainer/VBoxContainer/Apply_Button
 #endregion
 
 #region Utility/Start Funcs
-func _ready():
+func _ready() -> void:
 	df_banner.set_texture(BANNER)
 
-func _on_load_timer_timeout():
+func _on_load_timer_timeout() -> void:
 	"""
 		If you're reading this, I bet you're wondering:
 			"Why didn't he just use _ready()? Why is the initialization being
@@ -150,9 +149,9 @@ func _on_load_timer_timeout():
 	
 	get_saved_wp_data()
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if slideshow_is_running:
-		var time_left_rounded = floor(image_change_timer.time_left)
+		var time_left_rounded: int = int(floor(image_change_timer.get_time_left()))
 		time_label.text = "[color=ff0054]%s[/color]s until next change." % time_left_rounded
 	else:
 		if time_label.text != DEFAULT_SLIDESHOW_TIME_TEXT:
@@ -192,8 +191,8 @@ func _process(_delta):
 		if db_spin_box.is_editable():
 			db_spin_box.set_editable(false)
 
-func init_custom_files():
-	var filesystem_changed = false
+func init_custom_files() -> void:
+	var filesystem_changed: bool = false
 	
 	if not DirAccess.dir_exists_absolute(SINGLE_BG_FILE_PATH):
 		DirAccess.make_dir_absolute(SINGLE_BG_FILE_PATH)
@@ -214,9 +213,9 @@ func init_custom_files():
 	if filesystem_changed:
 		scan_filesystem()
 
-func script_editor_changed(script):
+func script_editor_changed(script: Script) -> void:
 	if current_code_editor_base != null:
-		var script_path
+		var script_path: String
 		if script.get_path() != null and script.get_path() != "":
 			script_path = script.get_path()
 			if script_path.get_extension() == "gd": # Prevents non-godot files from causing issues
@@ -225,7 +224,7 @@ func script_editor_changed(script):
 						This is very important because it prevents multiple video instances from
 						existing.
 					"""
-					for child in current_code_editor_base.get_children():
+					for child: Node in current_code_editor_base.get_children():
 						child.queue_free()
 					
 					current_code_editor_base = null
@@ -234,11 +233,11 @@ func script_editor_changed(script):
 					
 					_init_bg_vid()
 
-func scan_filesystem():
+func scan_filesystem() -> void:
 	if not EditorInterface.get_resource_filesystem().is_scanning():
 		EditorInterface.get_resource_filesystem().scan()
 
-func _on_autostart_check_box_toggled(toggled_on):
+func _on_autostart_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		autostart_vid_slides = true
 	else:
@@ -250,10 +249,10 @@ func _on_autostart_check_box_toggled(toggled_on):
 #endregion
 
 #region Single Image/General Funcs
-func _on_addon_resource_picker_resource_changed(resource):
+func _on_addon_resource_picker_resource_changed(resource: Resource) -> void:
 	ce_bg_img = resource
 
-func create_custom_theme(mode: String = "image", backround_image_to_set: CompressedTexture2D = null):
+func create_custom_theme(mode: String = "image", backround_image_to_set: CompressedTexture2D = null) -> void:
 	match mode:
 		"image":
 			if backround_image_to_set != null:
@@ -271,7 +270,7 @@ func create_custom_theme(mode: String = "image", backround_image_to_set: Compres
 				custom_ce_theme.set_stylebox("normal", "CodeEdit", custom_ce_stylebox_img_texture)
 				
 				## Save Theme
-				var new_single_bg_filename = str(randi() % 9999999999 + 1) + "_" + SINGLE_BG_FILE_NAME
+				var new_single_bg_filename: String = str(randi() % 9999999999 + 1) + "_" + SINGLE_BG_FILE_NAME
 				
 				clear_custom_theme_folder()
 				
@@ -279,16 +278,16 @@ func create_custom_theme(mode: String = "image", backround_image_to_set: Compres
 				
 				scan_filesystem()
 				
-				var custom_editor_theme_setting = EditorInterface.get_editor_settings()
+				var custom_editor_theme_setting: EditorSettings = EditorInterface.get_editor_settings()
 				custom_editor_theme_setting.set_setting("interface/theme/custom_theme", SINGLE_BG_FILE_PATH + new_single_bg_filename)
 				
 				# End
 				if current_bg_mode == BGModes.SINGLE_BG:
-					print_rich("[color=ff0054][wave]Dragonfruit Background Successfully Changed![/wave][/color]")
+					print_rich("[color=ff0054][wave]Dragonfruit: Background Successfully Changed![/wave][/color]")
 				elif current_bg_mode == BGModes.SLIDESHOW:
 					if do_first_slideshow_print:
 						do_first_slideshow_print = false
-						print_rich("[color=ff0054][wave]Dragonfruit Slideshow Successfully Started![/wave][/color]")
+						print_rich("[color=ff0054][wave]Dragonfruit: Slideshow Successfully Started! [/wave](Expect a small stutter.)[/color]")
 			else:
 				push_warning("Tried to create a custom BG theme but there is no bg image to be set.")
 				return
@@ -298,11 +297,11 @@ func create_custom_theme(mode: String = "image", backround_image_to_set: Compres
 				custom_ce_theme = Theme.new()
 				custom_ce_theme.add_type("CodeEdit")
 				
-				var empty_texture = StyleBoxEmpty.new()
+				var empty_texture: StyleBoxEmpty = StyleBoxEmpty.new()
 				
 				custom_ce_theme.set_stylebox("normal", "CodeEdit", empty_texture)
 				
-				var new_single_bg_filename = str(randi() % 9999999999 + 1) + "_" + SINGLE_BG_FILE_NAME
+				var new_single_bg_filename: String = str(randi() % 9999999999 + 1) + "_" + SINGLE_BG_FILE_NAME
 				
 				clear_custom_theme_folder()
 				
@@ -310,10 +309,10 @@ func create_custom_theme(mode: String = "image", backround_image_to_set: Compres
 				
 				scan_filesystem()
 				
-				var custom_editor_theme_setting = EditorInterface.get_editor_settings()
+				var custom_editor_theme_setting: EditorSettings = EditorInterface.get_editor_settings()
 				custom_editor_theme_setting.set_setting("interface/theme/custom_theme", SINGLE_BG_FILE_PATH + new_single_bg_filename)
 
-func _on_bg_mode_dropdown_item_selected(index):
+func _on_bg_mode_dropdown_item_selected(index: int) -> void:
 	match index:
 		0:
 			current_bg_mode = BGModes.SINGLE_BG
@@ -328,10 +327,10 @@ func _on_bg_mode_dropdown_item_selected(index):
 #endregion
 
 #region Slideshow Funcs
-func handle_slideshow_new_image_decider():
-	var random_files_name = slideshow_files.pick_random()
+func handle_slideshow_new_image_decider() -> void:
+	var random_files_name: String = slideshow_files.pick_random()
 	
-	var random_files_filepath = SLIDESHOW_BG_FILE_PATH + random_files_name
+	var random_files_filepath: String = SLIDESHOW_BG_FILE_PATH + random_files_name
 	
 	if not FileAccess.file_exists(random_files_filepath):
 		slideshow_is_running = false
@@ -339,7 +338,7 @@ func handle_slideshow_new_image_decider():
 		push_warning("Dragonfruit couldn't do the Slideshow. \"" + random_files_filepath + "\" Could not be found in the folder.")
 		return
 	
-	var random_files_image = load(random_files_filepath)
+	var random_files_image: Resource = load(random_files_filepath)
 	
 	if random_files_image is not CompressedTexture2D:
 		slideshow_is_running = false
@@ -353,10 +352,10 @@ func handle_slideshow_new_image_decider():
 	
 	create_custom_theme("image", random_files_image)
 
-func _on_image_change_timer_timeout():
+func _on_image_change_timer_timeout() -> void:
 	handle_slideshow_new_image_decider()
 
-func _on_switch_timer_dropdown_item_selected(index):
+func _on_switch_timer_dropdown_item_selected(index: int) -> void:
 	match index:
 		0:
 			current_slideshow_change_time = SlideshowTimes.ONE_MINUTE
@@ -380,7 +379,7 @@ func _on_switch_timer_dropdown_item_selected(index):
 			current_slideshow_change_time = SlideshowTimes.FIVE_MINUTES
 
 	if saved_wp_data_resource != null:
-		var slideshow_time_index = 0
+		var slideshow_time_index: int = 0
 		for value in SlideshowTimes.values():
 			if value == current_slideshow_change_time:
 				break
@@ -388,18 +387,17 @@ func _on_switch_timer_dropdown_item_selected(index):
 				slideshow_time_index += 1
 		saved_wp_data_resource.saved_slideshow_switch_time = slideshow_time_index
 		save_wp_data()
-
 #endregion
 
 #region Modulate Color Funcs
-func _on_color_picker_button_color_changed(color):
+func _on_color_picker_button_color_changed(color: Color) -> void:
 	custom_modulate_color = color
 	
 	if saved_wp_data_resource != null:
 		saved_wp_data_resource.saved_modulate_color = color
 		save_wp_data()
 
-func _on_reset_color_button_pressed():
+func _on_reset_color_button_pressed() -> void:
 	color_picker_button.set_pick_color(DEFAULT_MODULATE_COLOR)
 	custom_modulate_color = DEFAULT_MODULATE_COLOR
 	
@@ -409,7 +407,7 @@ func _on_reset_color_button_pressed():
 #endregion
 
 #region Axis Stretch Funcs
-func _on_h_axis_option_item_selected(index):
+func _on_h_axis_option_item_selected(index: int) -> void:
 	match index:
 		0:
 			h_axis_mode = StretchModes.STRETCH
@@ -422,7 +420,7 @@ func _on_h_axis_option_item_selected(index):
 		saved_wp_data_resource.saved_h_axis_stretch = h_axis_mode
 		save_wp_data()
 
-func _on_v_axis_option_item_selected(index):
+func _on_v_axis_option_item_selected(index: int) -> void:
 	match index:
 		0:
 			v_axis_mode = StretchModes.STRETCH
@@ -437,15 +435,15 @@ func _on_v_axis_option_item_selected(index):
 #endregion
 
 #region Video Funcs
-func _init_bg_vid():
+func _init_bg_vid() -> void:
 	match current_vid_mode:
 		VidFolderOrVidFile.FOLDER:
 			if DirAccess.dir_exists_absolute(VIDEO_BG_FILE_PATH):
 				if not DirAccess.get_files_at(VIDEO_BG_FILE_PATH).is_empty():
-					var vid_found = false
+					var vid_found: bool = false
 					
 					for file in DirAccess.get_files_at(VIDEO_BG_FILE_PATH):
-						var file_extension = file.get_extension()
+						var file_extension: String = file.get_extension()
 						
 						if file_extension == "ogv" or file_extension == "ogg":
 							local_user_video_path = VIDEO_BG_FILE_PATH + file
@@ -487,7 +485,7 @@ func _init_bg_vid():
 		push_warning("Dragonfruit couldn't apply Video BG. Local vid file's path does not exist.")
 		return
 	
-	var user_vid_check = load(local_user_video_path)
+	var user_vid_check: Resource = load(local_user_video_path)
 	if user_vid_check is not VideoStreamTheora:
 		push_warning("Dragonfruit couldn't apply Video BG. Video file selected but it is not of type VideoStreamTheora.")
 		return
@@ -497,10 +495,10 @@ func _init_bg_vid():
 	
 	current_code_editor_base = EditorInterface.get_script_editor().get_current_editor().get_base_editor()
 	
-	var video_player_scene = USER_VIDEO_SCENE.instantiate()
-	var video_stream_player = video_player_scene.get_node("Video_MC/VideoStreamPlayer")
+	var video_player_scene: Control = DRAGONFRUIT_USER_VIDEO_SCENE.instantiate()
+	var video_stream_player: VideoStreamPlayer = video_player_scene.get_node("Video_MC/VideoStreamPlayer")
 	
-	var video_stream = VideoStreamTheora.new()
+	var video_stream: VideoStreamTheora = VideoStreamTheora.new()
 	
 	video_stream.set_file(local_user_video_path)
 	
@@ -524,17 +522,17 @@ func _init_bg_vid():
 	
 	if current_code_editor_base.get_children().is_empty():
 		current_code_editor_base.add_child(video_player_scene)
-		current_code_editor_base.get_node("user_video_scene/Video_MC/VideoStreamPlayer").play()
-		video_player_for_buttons = current_code_editor_base.get_node("user_video_scene/Video_MC/VideoStreamPlayer")
+		current_code_editor_base.get_node("dragonfruit_user_video_scene/Video_MC/VideoStreamPlayer").play()
+		video_player_for_buttons = current_code_editor_base.get_node("dragonfruit_user_video_scene/Video_MC/VideoStreamPlayer")
 	else:
-		current_code_editor_base.get_node("user_video_scene/Video_MC/VideoStreamPlayer").play()
-		video_player_for_buttons = current_code_editor_base.get_node("user_video_scene/Video_MC/VideoStreamPlayer")
+		current_code_editor_base.get_node("dragonfruit_user_video_scene/Video_MC/VideoStreamPlayer").play()
+		video_player_for_buttons = current_code_editor_base.get_node("dragonfruit_user_video_scene/Video_MC/VideoStreamPlayer")
 	
 	## End
 	if not switch_script_change:
-		print_rich("[color=ff0054][wave]Dragonfruit Video Successfully Played![/wave][/color]")
+		print_rich("[color=ff0054][wave]Dragonfruit: Video Successfully Played![/wave][/color]")
 
-func _on_use_method_dropdown_item_selected(index):
+func _on_use_method_dropdown_item_selected(index: int) -> void:
 	match index:
 		0:
 			current_vid_mode = VidFolderOrVidFile.FOLDER
@@ -545,7 +543,7 @@ func _on_use_method_dropdown_item_selected(index):
 		saved_wp_data_resource.saved_vid_method = current_vid_mode
 		save_wp_data()
 
-func _on_vid_bus_dropdown_item_selected(index):
+func _on_vid_bus_dropdown_item_selected(index: int) -> void:
 	if video_player_for_buttons != null:
 		if not project_buses.is_empty():
 			current_selected_bus = project_buses[index]
@@ -555,20 +553,20 @@ func _on_vid_bus_dropdown_item_selected(index):
 				saved_wp_data_resource.saved_bus = current_selected_bus
 				save_wp_data()
 
-func get_audio_buses():
+func get_audio_buses() -> void:
 	vid_bus_dropdown.clear()
 	project_buses.clear()
 	
 	for bus in range(AudioServer.get_bus_count()):
-		var bus_name = AudioServer.get_bus_name(bus)
+		var bus_name: String = AudioServer.get_bus_name(bus)
 		project_buses.append(bus_name)
 	
-	var index = 0
-	for bus in project_buses:
+	var index: int = 0
+	for bus: String in project_buses:
 		vid_bus_dropdown.add_item(bus, index)
 		index += 1
 
-func _on_db_spin_box_value_changed(value):
+func _on_db_spin_box_value_changed(value: float) -> void:
 	if video_player_for_buttons != null:
 		video_player_for_buttons.set_volume_db(value)
 		
@@ -579,7 +577,7 @@ func _on_db_spin_box_value_changed(value):
 			saved_wp_data_resource.saved_video_volume = value
 			save_wp_data()
 
-func _on_reset_deci_button_pressed():
+func _on_reset_deci_button_pressed() -> void:
 	if video_player_for_buttons != null:
 		db_spin_box.value = DEFAULT_VID_VOLUME
 		video_player_for_buttons.set_volume_db(DEFAULT_VID_VOLUME)
@@ -591,7 +589,7 @@ func _on_reset_deci_button_pressed():
 			saved_wp_data_resource.saved_video_volume = DEFAULT_VID_VOLUME
 			save_wp_data()
 
-func _on_mute_button_toggled(toggled_on):
+func _on_mute_button_toggled(toggled_on: bool) -> void:
 	if video_player_for_buttons != null:
 		if toggled_on:
 			video_player_for_buttons.set_volume_db(-80)
@@ -609,18 +607,18 @@ func _on_mute_button_toggled(toggled_on):
 				saved_wp_data_resource.saved_video_volume = db_spin_box.value
 				save_wp_data()
 
-func _on_play_vid_button_pressed():
+func _on_play_vid_button_pressed() -> void:
 	if video_player_for_buttons != null:
 		if video_player_for_buttons.is_paused():
 			video_player_for_buttons.set_paused(false)
 
-func _on_pause_vid_button_pressed():
+func _on_pause_vid_button_pressed() -> void:
 	if video_player_for_buttons != null:
 		video_player_for_buttons.set_paused(true)
 #endregion
 
 #region Finish Funcs
-func _on_apply_button_pressed():
+func _on_apply_button_pressed() -> void:
 	init_custom_files()
 	
 	slideshow_is_running = false
@@ -639,8 +637,8 @@ func _on_apply_button_pressed():
 		BGModes.SLIDESHOW:
 			if DirAccess.dir_exists_absolute(SLIDESHOW_BG_FILE_PATH):
 				if not DirAccess.get_files_at(SLIDESHOW_BG_FILE_PATH).is_empty():
-					for image in DirAccess.get_files_at(SLIDESHOW_BG_FILE_PATH):
-						var file_extension = image.get_extension()
+					for image: String in DirAccess.get_files_at(SLIDESHOW_BG_FILE_PATH):
+						var file_extension: String = image.get_extension()
 						if file_extension == "png" or file_extension == "jpg" or \
 								file_extension == "jpeg":
 							slideshow_files.append(image)
@@ -664,18 +662,18 @@ func _on_apply_button_pressed():
 		_:
 			pass
 
-func _on_clear_button_pressed():
+func _on_clear_button_pressed() -> void:
 	if addon_resource_picker.get_edited_resource() != null:
 		addon_resource_picker.set_edited_resource(null)
 	
-	var slideshow_was_running
+	var slideshow_was_running: bool
 	if slideshow_is_running:
 		slideshow_is_running = false
 		image_change_timer.stop()
 		slideshow_was_running = true
 		do_first_slideshow_print = true
 	
-	var custom_editor_theme_setting = EditorInterface.get_editor_settings()
+	var custom_editor_theme_setting: EditorSettings = EditorInterface.get_editor_settings()
 	if custom_editor_theme_setting.get_setting("interface/theme/custom_theme") != "" and \
 			custom_editor_theme_setting.get_setting("interface/theme/custom_theme") != null:
 		custom_editor_theme_setting.set_setting("interface/theme/custom_theme", "")
@@ -683,7 +681,7 @@ func _on_clear_button_pressed():
 	clear_custom_theme_folder()
 	
 	if DirAccess.dir_exists_absolute(SAVED_WP_DATA_FILE_PATH):
-		for file in DirAccess.get_files_at(SAVED_WP_DATA_FILE_PATH):
+		for file: String in DirAccess.get_files_at(SAVED_WP_DATA_FILE_PATH):
 			DirAccess.remove_absolute(SAVED_WP_DATA_FILE_PATH + file)
 		
 		DirAccess.remove_absolute(SAVED_WP_DATA_FILE_PATH)
@@ -695,18 +693,18 @@ func _on_clear_button_pressed():
 	if slideshow_was_running:
 		print_rich("[color=yellow]Dragonfruit's Slideshow has been stopped.[/color]")
 
-func clear_custom_theme_folder():
+func clear_custom_theme_folder() -> void:
 	init_custom_files()
 	
-	for custom_theme_file in DirAccess.get_files_at(SINGLE_BG_FILE_PATH):
+	for custom_theme_file: String in DirAccess.get_files_at(SINGLE_BG_FILE_PATH):
 		DirAccess.remove_absolute(SINGLE_BG_FILE_PATH + custom_theme_file)
 	
-	var custom_editor_theme_setting = EditorInterface.get_editor_settings()
+	var custom_editor_theme_setting: EditorSettings = EditorInterface.get_editor_settings()
 	custom_editor_theme_setting.set_setting("interface/theme/custom_theme", "")
 	
 	current_code_editor_base = EditorInterface.get_script_editor().get_current_editor().get_base_editor()
 	if not current_code_editor_base.get_children().is_empty():
-		for child in current_code_editor_base.get_children():
+		for child: Node in current_code_editor_base.get_children():
 			child.queue_free()
 	
 	current_code_editor_base = null
@@ -718,7 +716,7 @@ func clear_custom_theme_folder():
 #endregion
 
 #region Save Load Funcs
-func get_saved_wp_data():
+func get_saved_wp_data() -> void:
 	if FileAccess.file_exists(SAVED_WP_DATA_FILE_PATH + SAVED_WP_DATA_FILE_NAME):
 		load_wp_data()
 	else:
@@ -727,10 +725,10 @@ func get_saved_wp_data():
 	
 	scan_filesystem()
 
-func save_wp_data():
+func save_wp_data() -> void:
 	ResourceSaver.save(saved_wp_data_resource, SAVED_WP_DATA_FILE_PATH + SAVED_WP_DATA_FILE_NAME)
 
-func load_wp_data():
+func load_wp_data() -> void:
 	saved_wp_data_resource = ResourceLoader.load(SAVED_WP_DATA_FILE_PATH + SAVED_WP_DATA_FILE_NAME)
 	
 	bg_mode_dropdown._select_int(saved_wp_data_resource.saved_bg_mode)
@@ -745,7 +743,7 @@ func load_wp_data():
 	use_method_dropdown.emit_signal("item_selected", saved_wp_data_resource.saved_vid_method)
 	video_line_edit.set_text(saved_wp_data_resource.saved_custom_video_path)
 	
-	var bus_index = project_buses.find(saved_wp_data_resource.saved_bus)
+	var bus_index: int = project_buses.find(saved_wp_data_resource.saved_bus)
 	if bus_index == -1:
 		bus_index = 0
 	vid_bus_dropdown._select_int(bus_index)

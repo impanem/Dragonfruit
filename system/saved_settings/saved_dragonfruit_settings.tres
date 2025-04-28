@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="DragonfruitSettings" load_steps=2 format=3 uid="uid://1uipturwijam"]
+[gd_resource type="Resource" script_class="DragonfruitSettings" load_steps=2 format=3 uid="uid://dm7l7fof7sq33"]
 
-[ext_resource type="Script" path="res://addons/Dragonfruit/system/scripts/dragonfruit_saved_settings.gd" id="1_isgdq"]
+[ext_resource type="Script" uid="uid://bikttuuumqt0i" path="res://addons/Dragonfruit/system/scripts/dragonfruit_saved_settings.gd" id="1_isgdq"]
 
 [resource]
 script = ExtResource("1_isgdq")

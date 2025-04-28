@@ -1,0 +1,61 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bg0sne68c2bf6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nw0ud"]
+bg_color = Color(0, 0, 0, 1)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2uwg"]
+bg_color = Color(0.448158, 0, 0.128323, 1)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yel6w"]
+bg_color = Color(1, 0, 0.329412, 1)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nw0ud"]
+color = Color(1, 0, 0.329412, 1)
+thickness = 4
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 0.478431)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 6
+Button/styles/disabled = SubResource("StyleBoxFlat_nw0ud")
+Button/styles/hover = SubResource("StyleBoxFlat_j2uwg")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_j2uwg")
+Button/styles/normal = SubResource("StyleBoxFlat_yel6w")
+Button/styles/pressed = SubResource("StyleBoxFlat_j2uwg")
+HSeparator/styles/separator = SubResource("StyleBoxLine_nw0ud")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 8
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 6
+RichTextLabel/font_sizes/normal_font_size = 12

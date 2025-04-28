@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6sod4m5bd5rh"
-path="res://.godot/imported/Split.png-08001f79e71a17da7294ff91d1e0c625.ctex"
+uid="uid://bfyih8if8p3vi"
+path="res://.godot/imported/ShaderEditor.png-a8c28e797c20335954235b839a183db0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Dragonfruit/system/git-pics/Split.png"
-dest_files=["res://.godot/imported/Split.png-08001f79e71a17da7294ff91d1e0c625.ctex"]
+source_file="res://addons/Dragonfruit/system/git-pics/ShaderEditor.png"
+dest_files=["res://.godot/imported/ShaderEditor.png-a8c28e797c20335954235b839a183db0.ctex"]
 
 [params]
 
