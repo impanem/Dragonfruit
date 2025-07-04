@@ -1,7 +1,7 @@
 # Dragonfruit for Godot
 A Godot Plugin that allows you to add a customizable background image, slideshow, or video, to your Godot Code Editor's background!
 
-By: [@Kreaytore](https://x.com/kreaytore)
+By: [@Panem](https://x.com/im_panem)
 
 Video Tutorial: https://youtu.be/2mn-ZqULlFc
 
