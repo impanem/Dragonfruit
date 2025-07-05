@@ -3,6 +3,8 @@ A Godot Plugin that allows you to add a customizable background image, slideshow
 
 By: [@Kreaytore](https://x.com/kreaytore)
 
+Tutorial: [https://youtu.be/2mn-ZqULlFc](https://youtu.be/2mn-ZqULlFc)
+
 ![An image of real Dragon Fruit](system/tool_theme/banner.jpg)
 
 ## What does Dragonfruit do?
