@@ -3,7 +3,7 @@ extends Control
 
 """
 Dragonfruit Code Editor Wallpaper Plugin
-Author: @Kreaytore
+Author: @Im_Panem
 Created: December 1st, 2024
 """
 
