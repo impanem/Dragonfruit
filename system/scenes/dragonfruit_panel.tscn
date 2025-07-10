@@ -67,7 +67,7 @@ bbcode_enabled = true
 text = "[center][wave][color=ff0054]Dragonfruit[/color]
 Code Editor Wallpaper
 [font_size=14]Ver. 1.1
-Developed by @Im_Panem[/font_size][/wave][/center]"
+Developed by @Kreay_Panem[/font_size][/wave][/center]"
 fit_content = true
 
 [node name="DF_Banner" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
