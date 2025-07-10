@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_isgdq")
 autostart_slides_vid = true
-saved_bg_mode = 1
-saved_slideshow_switch_time = 5
+saved_bg_mode = 0
+saved_slideshow_switch_time = 1
 saved_vid_method = 0
 saved_custom_video_path = ""
 saved_bus = "Master"
