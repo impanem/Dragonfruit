@@ -9,7 +9,7 @@ Tutorial: [https://youtu.be/2mn-ZqULlFc](https://youtu.be/2mn-ZqULlFc)
 
 ## What does Dragonfruit do?
 Dragonfruit is a Godot Plugin that allows you to easily add a customizable background image, slideshow of images, or a background video, to your Godot Code Editor!
-Tutorial: [https://youtu.be/2mn-ZqULlFc](https://youtu.be/2mn-ZqULlFc)
+
 ## Single Image Example
 ![Dragonfruit Image Example with Shinji](system/git-pics/image-ex.jpg)
 
